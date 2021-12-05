@@ -1,0 +1,41 @@
+<h2>Filme list Page</h2>
+<button [routerLink]="['/filmes/adicionar']">Novo</button>
+<!-- <button [routerLink]="['/filmes/consultar']">Consultar</button> -->
+<button [routerLink]="['../..']">Voltar</button>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Imagem</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Ano</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">imdbID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let filme of filmes | paginate: { itemsPerPage: 10, currentPage: page}">
+            <th scope="row">{{filme.id}}</th>
+            <td><img src="{{filme.poster}}" alt="" width="50"></td>
+            <td>{{filme.title}}</td>
+            <td>{{filme.year}}</td>
+            <td>{{filme.type}}</td>
+            <td>{{filme.imdbID}}</td>
+
+            <td class="d-flex td-margin">
+              <i [routerLink]="['/filmes/editar', filme.id]" class="fas fa-edit"></i>
+              <i [routerLink]="['/filmes/consultar', filme.id]" class="fas fa-eye"></i>
+              <i (click)="deleteFilme(filme.id)" class="fas fa-trash-alt"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
+    </div>
+  </div>
+</div>
+

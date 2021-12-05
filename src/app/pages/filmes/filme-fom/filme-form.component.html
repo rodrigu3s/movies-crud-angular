@@ -1,0 +1,48 @@
+<h2>Filme Form Page</h2>
+<button (click)="this.voltar()">Voltar</button>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form (submit)="submit()" [formGroup]="form">
+        <div class="form-group">
+          <label for="title">Titulo do Filme/Série</label>
+          <input formControlName="title" type="text" class="form-control" id="title" placeholder="Titulo do Filme/Série">
+          <ng-container *ngIf="form.controls.title.touched">
+            <span *ngIf="form.controls.title.errors">
+              Campo obrigatório
+            </span>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label for="year">Ano de Lançamento</label>
+          <input formControlName="year" type="number" class="form-control" id="year" placeholder="Ano de Lançamento">
+        </div>
+        <div class="form-group">
+          <label for="type">Tipo</label>
+          <input formControlName="type" type="text" class="form-control" id="type" placeholder="Tipo">
+        </div>
+        <div class="form-group">
+          <label for="imdb">imdb ID</label>
+          <input formControlName="imdbID" type="number" class="form-control" id="imdb" placeholder="imdb ID">
+          <ng-container *ngIf="form.controls.imdbID.touched">
+            <span *ngIf="form.controls.imdbID.errors">
+              Campo obrigatório
+            </span>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label for="poster">URL da Imagem</label>
+          <input formControlName="poster" type="text" class="form-control" id="poster" placeholder="URL da Imagem">
+        </div>
+        <!-- <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div> -->
+        <div class="d-flex justify-content-end ">
+          <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
