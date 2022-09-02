@@ -1,4 +1,3 @@
-<h2>Filme Consult Page</h2>
 <button (click)="this.voltar()">Voltar</button>
 
 <div class="container">
@@ -9,7 +8,9 @@
       <li>ano: {{filme?.year}}</li>
       <li>imdbID: {{filme?.imdbID}} </li>
       <li>tipo: {{filme?.type}}</li>
-      <li>poster: {{filme?.poster}}</li>
+      <li>poster:</li>
+      <img src="{{filme?.poster}}" alt="banner do filme" width="300px">
+
     </ul>
   </div>
 </div>
